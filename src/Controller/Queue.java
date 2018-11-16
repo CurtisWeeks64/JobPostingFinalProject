@@ -1,3 +1,5 @@
+package Controller;
+import Model.Applicant;
 
 public class Queue {
 	

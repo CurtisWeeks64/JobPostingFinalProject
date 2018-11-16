@@ -1,3 +1,5 @@
+package Controller;
+import Model.Job;
 
 public class Link {
 	
@@ -10,6 +12,10 @@ public class Link {
 	
 	public void displayLink() {
 		System.out.println(job.toString());
+	}
+	
+	public String toString() {
+		return job.toString();
 	}
 
 }

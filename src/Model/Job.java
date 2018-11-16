@@ -1,3 +1,5 @@
+package Model;
+import Controller.Queue;
 
 public class Job {
 	
@@ -6,6 +8,7 @@ public class Job {
 	private double salary;
 	private double fte; //Full time equivalent. 1=fulltime, .5=halftime.
 	private String description;
+	public Queue applicantQueue;
 	
 	public Job(String title, String company, double salary, double fte, String description) {
 		super();
@@ -14,6 +17,7 @@ public class Job {
 		this.salary = salary;
 		this.fte = fte;
 		this.description = description;
+		applicantQueue = new Queue();
 	}
 
 	public String getTitle() {
