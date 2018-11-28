@@ -1,6 +1,9 @@
 package Controller;
 import Model.Job;
 
+/**
+ * This class is the link used for the linked list of jobs
+ */
 public class Link {
 	
 	public Job job;

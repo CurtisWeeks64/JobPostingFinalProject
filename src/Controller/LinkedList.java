@@ -1,10 +1,14 @@
 package Controller;
 import Model.Job;
 
+/**
+ * This is the linked list of jobs
+ */
 public class LinkedList {
 	
 	private Link first;
 	private Link last;
+	private int jobCounter = 1000;
 	
 	public LinkedList() {
 		first = null;
@@ -15,9 +19,13 @@ public class LinkedList {
 		return (first==null);
 	}
 	
+	/**
+	 * @param job
+	 * This method inserts a job at the end of the linked list
+	 */
 	public void insert(Job job) {
 		Link newLink = new Link(job);
-		
+		newLink.job.setJobNumber(++jobCounter);
 		if(isEmpty()) {
 			first = newLink;
 		} else {
@@ -26,26 +34,10 @@ public class LinkedList {
 		last = newLink;
 	}
 	
-	/* Regular insert is more appropriate
-	public void insert(Job job) {
-		
-		Link newLink = new Link(job);
-		Link previous = null;
-		Link current = first;
-		
-		while(current != null && current.job.getTitle().compareToIgnoreCase(newLink.job.getTitle())<0) {
-			previous = current;
-			current = current.next;
-		}
-		
-		if(previous==null) {
-			first = newLink;
-		} else {
-			previous.next = newLink;
-		}
-		newLink.next = current;
-	} */
-	
+	/**
+	 * @return
+	 * This method deletes the first job in the linked list
+	 */
 	public Link deleteFirst() {
 		Link temp = first;
 		if(first.next == null) {
@@ -55,36 +47,23 @@ public class LinkedList {
 		return temp;
 	}
 	
-	public void displayList() {
+	/**
+	 * @return
+	 * This method displays the entire list of jobs
+	 */
+	public String displayList() {
+		String displayString = "";
 		Link current = first;
 		while(current != null) {
-			current.displayLink();
+			displayString += current.toString() + "\n\n";
 			current = current.next;
 		}
-	}
-	
-	public String generateListString() {
-		String returnString = "";
-		Link current = first;
-		while(current != null) {
-			returnString += current.toString() + "\n\n";
-			current = current.next;
-		}
-		
-		return returnString;
+		return displayString;
 	}
 
-	public int determineSize() {
-		int counter = 0;
-		Link current = first;
-		
-		while(current != null) {
-			current = current.next;
-			counter++;
-		}
-		return counter;
-	}
-	
+	/**
+	 * This method is used to sort jobs by salary
+	 */
 	public void sortBySalaryHighToLow() {
 		Link root = first, current, highest;
 
@@ -105,6 +84,32 @@ public class LinkedList {
 		}
 	}
 	
+	/**
+	 * This method is used to sort jobs by job number
+	 */
+	public void sortByJobNumber() {
+		Link root = first, current, lowest;
+
+		while(root.next != null) {
+			lowest = root;
+			current = root.next;
+			while(current != null) {
+				if(current.job.getJobNumber() < lowest.job.getJobNumber()) {
+					lowest = current;
+				}
+				current = current.next;
+			}
+			Job temp = root.job;
+			root.job = lowest.job;
+			lowest.job = temp;
+			
+			root = root.next;
+		}
+	}
+	
+	/**
+	 * This method is used to sort jobs by job title
+	 */
 	public void sortByTitle() {
 		Link root = first, current, highest;
 
@@ -125,6 +130,9 @@ public class LinkedList {
 		}
 	}
 	
+	/**
+	 * This method is used to sort jobs by comapny name
+	 */
 	public void sortByCompany() {
 		Link root = first, current, highest;
 
@@ -143,5 +151,24 @@ public class LinkedList {
 			
 			root = root.next;
 		}
+	}
+	
+	/**
+	 * @param number
+	 * @return
+	 * This method is used to find the specific job using the job number as search criteria
+	 */
+	public Link findJobNumber(int number) {
+		if(number < 1000) {
+			return null;
+		}
+		Link current = first;
+		while(current != null) {
+			if(current.job.getJobNumber() == number) {
+				return current;
+			}
+			current = current.next;
+		}
+		return null;
 	}
 }

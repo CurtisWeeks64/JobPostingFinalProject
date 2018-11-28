@@ -1,5 +1,8 @@
 package Model;
 
+/**
+ * This is the applicant class for the job postings
+ */
 public class Applicant {
 	
 	private String name;
@@ -56,6 +59,16 @@ public class Applicant {
 
 	public void setWorkHistory(String workHistory) {
 		this.workHistory = workHistory;
+	}
+	
+	/**
+	 * @return
+	 * This method returns the string for the individual applicant
+	 */
+	public String toString() {
+		String returnString = "Name: " + name + ", Current Title: " + currentTitle + ", Desired Salary: " + desiredSalary +
+				"\nEducation Level: " + educationLevel + ", Work History: " + workHistory;
+		return returnString;
 	}
 
 }

@@ -1,8 +1,12 @@
 package Model;
 import Controller.Queue;
 
+/**
+ * This is the class for the jobs
+ */
 public class Job {
 	
+	private int jobNumber;
 	private String title;
 	private String company;
 	private double salary;
@@ -59,10 +63,23 @@ public class Job {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public int getJobNumber() {
+		return jobNumber;
+	}
 
+	public void setJobNumber(int number) {
+		this.jobNumber = number;
+	}
+
+	/**
+	 * @return
+	 * This method returns the individual job as a string
+	 */
 	public String toString() {
-		return "Job title: " + title + ", Company: " + company + ", Salary: " + salary + ", Full Time Equivalent: " + fte + ", Job description: "
-				+ description;
+		return "Job number: " + jobNumber + ", Job title: " + title + ", Company: " + company + 
+				"\nSalary: " + salary + ", Full Time Equivalent: " + fte + 
+				"\nJob description: " + description;
 	}	
 
 }

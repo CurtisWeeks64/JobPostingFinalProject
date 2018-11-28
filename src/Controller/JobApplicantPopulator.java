@@ -3,12 +3,18 @@ package Controller;
 import Model.Applicant;
 import Model.Job;
 
+/**
+ * This class has a single method that populates jobs and applicants for the application run
+ */
 public class JobApplicantPopulator {
 	
 	public LinkedList list;
 	
 	public JobApplicantPopulator() {}
 	
+	/**
+	 * This is the method to populate jobs and applicants
+	 */
 	public LinkedList populate() {
 		
 		list = new LinkedList();
